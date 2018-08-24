@@ -1,0 +1,8 @@
+C:\Users\Marce\Documents\SharpDevelop Projects\Prueba_1_Marcelo_Aranda\Prueba_1_Marcelo_Aranda\bin\Debug\Prueba_1_Marcelo_Aranda.exe.config
+C:\Users\Marce\Documents\SharpDevelop Projects\Prueba_1_Marcelo_Aranda\Prueba_1_Marcelo_Aranda\bin\Debug\Prueba_1_Marcelo_Aranda.exe
+C:\Users\Marce\Documents\SharpDevelop Projects\Prueba_1_Marcelo_Aranda\Prueba_1_Marcelo_Aranda\bin\Debug\Prueba_1_Marcelo_Aranda.pdb
+C:\Users\Marce\Documents\SharpDevelop Projects\Prueba_1_Marcelo_Aranda\Prueba_1_Marcelo_Aranda\obj\Debug\Prueba_1_Marcelo_Aranda.csprojResolveAssemblyReference.cache
+C:\Users\Marce\Documents\SharpDevelop Projects\Prueba_1_Marcelo_Aranda\Prueba_1_Marcelo_Aranda\obj\Debug\Prueba_1_Marcelo_Aranda.MainForm.resources
+C:\Users\Marce\Documents\SharpDevelop Projects\Prueba_1_Marcelo_Aranda\Prueba_1_Marcelo_Aranda\obj\Debug\Prueba_1_Marcelo_Aranda.csproj.GenerateResource.Cache
+C:\Users\Marce\Documents\SharpDevelop Projects\Prueba_1_Marcelo_Aranda\Prueba_1_Marcelo_Aranda\obj\Debug\Prueba_1_Marcelo_Aranda.exe
+C:\Users\Marce\Documents\SharpDevelop Projects\Prueba_1_Marcelo_Aranda\Prueba_1_Marcelo_Aranda\obj\Debug\Prueba_1_Marcelo_Aranda.pdb
