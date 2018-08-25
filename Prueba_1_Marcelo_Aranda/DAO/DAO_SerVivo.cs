@@ -39,7 +39,7 @@ namespace Prueba_1_Marcelo_Aranda.DAO
 		{
 			
 		var obj = lista.FirstOrDefault(x => x.NombreCientifico == ser.NombreCientifico);
-		ser=obj;
+		obj.LapsoDeVidaEnAnios=ser.LapsoDeVidaEnAnios;
 			
 			
 		}

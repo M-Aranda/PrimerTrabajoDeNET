@@ -40,7 +40,12 @@ namespace Prueba_1_Marcelo_Aranda.Model
 		public void Update(Microbio mic)
 		{
 		var obj = lista.FirstOrDefault(x => x.NombreCientifico == mic.NombreCientifico);
-		mic=obj;
+		obj.LapsoDeVidaEnAnios=mic.LapsoDeVidaEnAnios;
+		obj.AnioDeDescubrimiento=mic.AnioDeDescubrimiento;
+		obj.ResponsableDe=mic.ResponsableDe;
+		
+	
+		
 		}
 
 		public void Delete(string nombre)

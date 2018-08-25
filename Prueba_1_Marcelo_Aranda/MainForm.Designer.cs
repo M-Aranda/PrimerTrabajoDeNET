@@ -32,6 +32,8 @@ namespace Prueba_1_Marcelo_Aranda
 		private System.Windows.Forms.ComboBox cboMicrobios;
 		private System.Windows.Forms.Button btnBorrarSerVivo;
 		private System.Windows.Forms.Button btnBorrarMicrobio;
+		private System.Windows.Forms.Button btnActualizarSerVivo;
+		private System.Windows.Forms.Button btnActualizarMicrobio;
 		
 		/// <summary>
 		/// Disposes resources used by the form.
@@ -72,6 +74,8 @@ namespace Prueba_1_Marcelo_Aranda
 			this.cboMicrobios = new System.Windows.Forms.ComboBox();
 			this.btnBorrarSerVivo = new System.Windows.Forms.Button();
 			this.btnBorrarMicrobio = new System.Windows.Forms.Button();
+			this.btnActualizarSerVivo = new System.Windows.Forms.Button();
+			this.btnActualizarMicrobio = new System.Windows.Forms.Button();
 			this.SuspendLayout();
 			// 
 			// lblNombreCienSerVivo
@@ -222,11 +226,33 @@ namespace Prueba_1_Marcelo_Aranda
 			this.btnBorrarMicrobio.UseVisualStyleBackColor = true;
 			this.btnBorrarMicrobio.Click += new System.EventHandler(this.BtnBorrarMicrobioClick);
 			// 
+			// btnActualizarSerVivo
+			// 
+			this.btnActualizarSerVivo.Location = new System.Drawing.Point(61, 168);
+			this.btnActualizarSerVivo.Name = "btnActualizarSerVivo";
+			this.btnActualizarSerVivo.Size = new System.Drawing.Size(105, 23);
+			this.btnActualizarSerVivo.TabIndex = 18;
+			this.btnActualizarSerVivo.Text = "Actualizar ser vivo";
+			this.btnActualizarSerVivo.UseVisualStyleBackColor = true;
+			this.btnActualizarSerVivo.Click += new System.EventHandler(this.BtnActualizarSerVivoClick);
+			// 
+			// btnActualizarMicrobio
+			// 
+			this.btnActualizarMicrobio.Location = new System.Drawing.Point(523, 268);
+			this.btnActualizarMicrobio.Name = "btnActualizarMicrobio";
+			this.btnActualizarMicrobio.Size = new System.Drawing.Size(118, 23);
+			this.btnActualizarMicrobio.TabIndex = 19;
+			this.btnActualizarMicrobio.Text = "Actualizar microbio";
+			this.btnActualizarMicrobio.UseVisualStyleBackColor = true;
+			this.btnActualizarMicrobio.Click += new System.EventHandler(this.BtnActualizarMicrobioClick);
+			// 
 			// MainForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(808, 327);
+			this.Controls.Add(this.btnActualizarMicrobio);
+			this.Controls.Add(this.btnActualizarSerVivo);
 			this.Controls.Add(this.btnBorrarMicrobio);
 			this.Controls.Add(this.btnBorrarSerVivo);
 			this.Controls.Add(this.cboMicrobios);

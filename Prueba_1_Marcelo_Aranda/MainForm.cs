@@ -12,6 +12,8 @@ using System.Drawing;
 using System.Windows.Forms;
 using Prueba_1_Marcelo_Aranda.Model;
 using Prueba_1_Marcelo_Aranda.DAO;
+using System.Collections.Generic;
+using System.Linq;
 
 
 namespace Prueba_1_Marcelo_Aranda
@@ -67,7 +69,7 @@ namespace Prueba_1_Marcelo_Aranda
 			SerVivo sv=listadoDeSeresVivos.Find(x=>x.NombreCientifico=="Homo Sapiens");
 			
 			cboSeresVivos.DataSource=listadoDeSeresVivos;
-			cboSeresVivos.DropDownStyle=ComboBoxStyle.DropDownList;
+			//cboSeresVivos.DropDownStyle=ComboBoxStyle.DropDownList;
 			cboMicrobios.DataSource=listadoDeMicrobios;
 			cboMicrobios.DropDownStyle=ComboBoxStyle.DropDownList;
 			
@@ -87,8 +89,9 @@ namespace Prueba_1_Marcelo_Aranda
 			SerVivo ser=new SerVivo();
 			ser.NombreCientifico=txtSerVivoNombre.Text;
 			ser.LapsoDeVidaEnAnios=Convert.ToInt32(txtLapsoDeVidaSerVivo.Text);
-			seresVivos.Create(ser);
 			
+			seresVivos.Create(ser);
+		
 		
 			cboSeresVivos.DataSource=null;
 			cboSeresVivos.DataSource=seresVivos.Read();
@@ -99,19 +102,12 @@ namespace Prueba_1_Marcelo_Aranda
 			txtSerVivoNombre.ResetText();
 			txtLapsoDeVidaSerVivo.ResetText();
 			
+			
 			MessageBox.Show("Ser vivo registrado!");
-				
 			
-
-				
-				
-			
-
-
-
-
 	
 		}
+		
 		void BtnRegistrarMicrobioClick(object sender, EventArgs e)
 		{
 			Microbio mic=new Microbio();
@@ -124,7 +120,7 @@ namespace Prueba_1_Marcelo_Aranda
 			
 			cboMicrobios.DataSource=null;
 			cboMicrobios.DataSource=microbios.Read();
-			//cboMicrobios.DropDownStyle=ComboBoxStyle.DropDown;
+			cboMicrobios.DropDownStyle=ComboBoxStyle.DropDown;
 			cboMicrobios.DisplayMember="nombreCientifico";
 			cboMicrobios.ValueMember="nombreCientifico";
 			
@@ -196,6 +192,53 @@ namespace Prueba_1_Marcelo_Aranda
 			MessageBox.Show("Borrado exitoso!");
 			
 	
+		}
+		void BtnActualizarSerVivoClick(object sender, EventArgs e)
+		{
+			SerVivo ser=new SerVivo();
+			ser.NombreCientifico=txtSerVivoNombre.Text;
+			ser.LapsoDeVidaEnAnios=Convert.ToInt32(txtLapsoDeVidaSerVivo.Text);
+			
+			seresVivos.Update(ser);
+		
+		
+			cboSeresVivos.DataSource=null;
+			cboSeresVivos.DataSource=seresVivos.Read();
+			cboSeresVivos.DropDownStyle=ComboBoxStyle.DropDownList;	
+			cboSeresVivos.DisplayMember="nombreCientifico";
+			cboSeresVivos.ValueMember="nombreCientifico";
+			
+			txtSerVivoNombre.ResetText();
+			txtLapsoDeVidaSerVivo.ResetText();
+			
+			
+			MessageBox.Show("Ser vivo actualizado!");
+	
+		}
+		void BtnActualizarMicrobioClick(object sender, EventArgs e)
+		{
+			Microbio mic=new Microbio();
+			mic.NombreCientifico=txtNombreMicrobio.Text;
+			mic.LapsoDeVidaEnAnios=Convert.ToInt32(txtLapsoDeVidaMicrobio.Text);
+			mic.AnioDeDescubrimiento=Convert.ToInt32(txtAnioDescubrimiento.Text);
+			mic.ResponsableDe=txtResponsableDe.Text;	
+			microbios.Update(mic);
+			
+			
+			cboMicrobios.DataSource=null;
+			cboMicrobios.DataSource=microbios.Read();
+			cboMicrobios.DropDownStyle=ComboBoxStyle.DropDown;
+			cboMicrobios.DisplayMember="nombreCientifico";
+			cboMicrobios.ValueMember="nombreCientifico";
+			
+			
+			txtNombreMicrobio.ResetText();
+			txtLapsoDeVidaMicrobio.ResetText();
+			txtAnioDescubrimiento.ResetText();
+			txtResponsableDe.ResetText();
+			cboSeresVivos.SelectedIndex=0;
+			
+			MessageBox.Show("Microbio actualizado!");
 		}
 		
 		
