@@ -13,6 +13,7 @@ using System.Windows.Forms;
 using Prueba_1_Marcelo_Aranda.Model;
 using Prueba_1_Marcelo_Aranda.DAO;
 
+
 namespace Prueba_1_Marcelo_Aranda
 {
 	/// <summary>
@@ -20,6 +21,9 @@ namespace Prueba_1_Marcelo_Aranda
 	/// </summary>
 	public partial class MainForm : Form
 	{
+		DAO_Microbio microbios;
+		DAO_SerVivo seresVivos;
+		
 		public MainForm()
 		{
 			//
@@ -34,15 +38,43 @@ namespace Prueba_1_Marcelo_Aranda
 			perro.NombreCientifico="Canis lupus familiaris";
 			perro.LapsoDeVidaEnAnios=15;
 			
-			DAO_SerVivo seresVivos= new DAO_SerVivo();
+			seresVivos= new DAO_SerVivo();
 			seresVivos.Create(humano);
 			seresVivos.Create(perro);
 			
-			List<SerVivo>lis= seresVivos.Read();
 			
-			SerVivo sv=lis.Find(x=>x.NombreCientifico=="Homo Sapiens");
-			txtNomCien.Text=Convert.ToString(sv.LapsoDeVidaEnAnios);
+			Microbio colera= new Microbio();
+			colera.NombreCientifico="Vibrio cholerae";
+			colera.LapsoDeVidaEnAnios=2;
+			colera.AnioDeDescubrimiento=1650;
+			colera.ResponsableDe="Colera";
 			
+			Microbio malaria= new Microbio();
+			malaria.NombreCientifico="Plasmodium";
+			malaria.LapsoDeVidaEnAnios=1;
+			malaria.AnioDeDescubrimiento=1850;
+			malaria.ResponsableDe="Malaria";
+			
+			
+			microbios= new DAO_Microbio();
+			microbios.Create(colera);
+			microbios.Create(malaria);
+			
+			
+			List<SerVivo>listadoDeSeresVivos= seresVivos.Read();
+			List<Microbio>listadoDeMicrobios=microbios.Read();
+			
+			SerVivo sv=listadoDeSeresVivos.Find(x=>x.NombreCientifico=="Homo Sapiens");
+			
+			cboSeresVivos.DataSource=listadoDeSeresVivos;
+			cboSeresVivos.DropDownStyle=ComboBoxStyle.DropDownList;
+			cboMicrobios.DataSource=listadoDeMicrobios;
+			cboMicrobios.DropDownStyle=ComboBoxStyle.DropDownList;
+			
+			cboSeresVivos.DisplayMember="nombreCientifico";
+			cboSeresVivos.ValueMember="nombreCientifico";
+			cboMicrobios.DisplayMember="nombreCientifico";
+			cboMicrobios.ValueMember="nombreCientifico";
 			
 
 		}
@@ -50,5 +82,125 @@ namespace Prueba_1_Marcelo_Aranda
 		{
 	
 		}
+		void BtnRegistrarSerVivoClick(object sender, EventArgs e)
+		{
+			SerVivo ser=new SerVivo();
+			ser.NombreCientifico=txtSerVivoNombre.Text;
+			ser.LapsoDeVidaEnAnios=Convert.ToInt32(txtLapsoDeVidaSerVivo.Text);
+			seresVivos.Create(ser);
+			
+		
+			cboSeresVivos.DataSource=null;
+			cboSeresVivos.DataSource=seresVivos.Read();
+			cboSeresVivos.DropDownStyle=ComboBoxStyle.DropDownList;	
+			cboSeresVivos.DisplayMember="nombreCientifico";
+			cboSeresVivos.ValueMember="nombreCientifico";
+			
+			txtSerVivoNombre.ResetText();
+			txtLapsoDeVidaSerVivo.ResetText();
+			
+			MessageBox.Show("Ser vivo registrado!");
+				
+			
+
+				
+				
+			
+
+
+
+
+	
+		}
+		void BtnRegistrarMicrobioClick(object sender, EventArgs e)
+		{
+			Microbio mic=new Microbio();
+			mic.NombreCientifico=txtNombreMicrobio.Text;
+			mic.LapsoDeVidaEnAnios=Convert.ToInt32(txtLapsoDeVidaMicrobio.Text);
+			mic.AnioDeDescubrimiento=Convert.ToInt32(txtAnioDescubrimiento.Text);
+			mic.ResponsableDe=txtResponsableDe.Text;	
+			microbios.Create(mic);
+			
+			
+			cboMicrobios.DataSource=null;
+			cboMicrobios.DataSource=microbios.Read();
+			//cboMicrobios.DropDownStyle=ComboBoxStyle.DropDown;
+			cboMicrobios.DisplayMember="nombreCientifico";
+			cboMicrobios.ValueMember="nombreCientifico";
+			
+			
+			txtNombreMicrobio.ResetText();
+			txtLapsoDeVidaMicrobio.ResetText();
+			txtAnioDescubrimiento.ResetText();
+			txtResponsableDe.ResetText();
+			MessageBox.Show("Microbio registrado!");
+	
+		}
+		void CboSeresVivosSelectedIndexChanged(object sender, EventArgs e)
+		{
+			
+			SerVivo s= (SerVivo)cboSeresVivos.SelectedItem;
+			txtSerVivoNombre.Text=s.NombreCientifico;
+			txtLapsoDeVidaSerVivo.Text=Convert.ToString(s.LapsoDeVidaEnAnios);
+		}
+		void CboMicrobiosSelectedIndexChanged(object sender, EventArgs e)
+		{
+			Microbio mic=(Microbio)cboMicrobios.SelectedItem;
+			txtNombreMicrobio.Text=mic.NombreCientifico;
+			txtLapsoDeVidaMicrobio.Text=Convert.ToString(mic.LapsoDeVidaEnAnios);
+			txtAnioDescubrimiento.Text=Convert.ToString(mic.AnioDeDescubrimiento);
+			txtResponsableDe.Text=mic.ResponsableDe;
+			
+
+	
+		}
+		void BtnBorrarSerVivoClick(object sender, EventArgs e)
+		{
+			SerVivo ser=(SerVivo)cboSeresVivos.SelectedItem;
+			String nombreCientificoDeSerVivo=ser.NombreCientifico;
+			seresVivos.Delete(nombreCientificoDeSerVivo);
+	
+			cboSeresVivos.DataSource=null;
+			cboSeresVivos.DataSource=seresVivos.Read();
+			cboSeresVivos.DropDownStyle=ComboBoxStyle.DropDownList;
+			cboSeresVivos.DisplayMember="nombreCientifico";
+			cboSeresVivos.ValueMember="nombreCientifico";
+			
+			txtSerVivoNombre.ResetText();
+			txtLapsoDeVidaSerVivo.ResetText();
+			
+			
+			MessageBox.Show("Borrado exitoso!");
+			
+			
+			
+		}
+		void BtnBorrarMicrobioClick(object sender, EventArgs e)
+		{
+			Microbio mic=(Microbio)cboMicrobios.SelectedItem;
+			String nombreCientificoMicrobio=mic.NombreCientifico;
+			microbios.Delete(nombreCientificoMicrobio);
+	
+			cboMicrobios.DataSource=null;
+			cboMicrobios.DataSource=microbios.Read();
+			cboMicrobios.DropDownStyle=ComboBoxStyle.DropDownList;
+			cboMicrobios.DisplayMember="nombreCientifico";
+			cboMicrobios.ValueMember="nombreCientifico";
+			
+			txtNombreMicrobio.ResetText();
+			txtLapsoDeVidaMicrobio.ResetText();
+			txtAnioDescubrimiento.ResetText();
+			txtResponsableDe.ResetText();
+			
+			
+			MessageBox.Show("Borrado exitoso!");
+			
+	
+		}
+		
+		
+		
+		
+		
 	}
 }

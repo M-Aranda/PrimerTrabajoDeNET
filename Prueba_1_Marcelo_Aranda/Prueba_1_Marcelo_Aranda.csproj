@@ -50,6 +50,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DAO\DAO_Microbio.cs" />
     <Compile Include="DAO\DAO_SerVivo.cs" />
     <Compile Include="DAO\IDAO.cs" />
     <Compile Include="MainForm.cs" />
